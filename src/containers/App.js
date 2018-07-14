@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import CardList from './CardList'
+import '../containers/App.css';
+import CardList from '../components/CardList'
+import CheckWin from '../components/CheckWin'
 
 class App extends Component {
 	constructor(){
@@ -8,15 +9,21 @@ class App extends Component {
 		this.state = {
 			primary: [],
 			cardList: [],
+			counter: 0,
+			target: '',
 			}
 	}
-	
-	componentDidMount() {
+
+	componentDidMount = () => {
+		this.setState({counter: 0});
 		this.getLists('https://swapi.co/api/people/30/');
-		
+		fetch(this.getTarget())
+		.then(response => response.json())
+		.then(newTarget => {
+			this.setState({target: newTarget.name})})
 	}
 
-	getLists(url) {
+	getLists = (url) => {
 		fetch(url)
 		.then(response => response.json())
 		.then(primaryCard => {
@@ -27,7 +34,20 @@ class App extends Component {
 		.then(linkArray => this.getData(linkArray))
 	}
 
+	reset = () => {
+		this.setState({counter: 0});
+		this.getLists('https://swapi.co/api/people/30')
+	}
+
+	getTarget = () => {
+		const targetNum = Math.floor(Math.random() * 87) + 1;
+		if(targetNum === 30){this.getTarget()}
+		return ('https://swapi.co/api/people/' + targetNum);
+	}
+
 	resetPrimary= (url) => {
+		const {counter} = this.state;
+		this.setState({counter: counter+1});
 		this.getLists(url);
 	}
 
@@ -42,6 +62,11 @@ class App extends Component {
 		if (primaryCard.hasOwnProperty('characters') && Array.isArray(primaryCard.characters)) {
 			primaryCard.characters.map(item => totalCards.push(item))
 		} else if (primaryCard.hasOwnProperty('characters')) {
+			totalCards.push(primaryCard.characters)
+		}
+		if (primaryCard.hasOwnProperty('people') && Array.isArray(primaryCard.people)) {
+			primaryCard.people.map(item => totalCards.push(item))
+		} else if (primaryCard.hasOwnProperty('people')) {
 			totalCards.push(primaryCard.people)
 		}
 		if (primaryCard.hasOwnProperty('films') && Array.isArray(primaryCard.films)) {
@@ -73,24 +98,21 @@ class App extends Component {
 	}
 
 	render() {
-		const {primary, cardList} = this.state;
-		
+		const {primary, cardList, counter, target} = this.state;		
 		return (
-		<div className="App">
-			<header className='bg-black'>
-				<div className='ba br4 bw3 b--yellow w5 center yellow'>
-					<h1> Six Degrees of Wicket</h1>
-				</div>
-			</header>
-			<body className='bg-black items-center-l pt5'>
+			<div className="App">
 				<div>
-					<CardList dataArray = {primary} resetPrimary = {this.resetPrimary}/>
+					<CheckWin primary = {primary} target = {target} counter = {counter} reset={this.componentDidMount}/> 
 				</div>
-				<div>
-					<CardList dataArray = {cardList} resetPrimary = {this.resetPrimary}/>
-				</div>
-			</body>
-		</div>
+				<body className='items-center-l pt5'>
+					<div>
+						<CardList dataArray = {primary} resetPrimary = {this.resetPrimary}/>
+					</div>
+					<div className='container'>
+						<CardList dataArray = {cardList} resetPrimary = {this.resetPrimary}/>
+					</div>
+				</body>
+			</div>
 		);
 	}
 }

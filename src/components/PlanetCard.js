@@ -12,7 +12,7 @@ class PlanetCard extends Component {
 	}
 	render(){
 		return(
-			<div className='bg-light-purple dib br3 b--blue pa3 ma2 grow bw3 w5' onClick={this.wasClicked}>
+			<div className='card bg-light-purple dib ma2 br3 b--purple grow ba w5' onClick={this.wasClicked}>
 				<h2> {this.props.planet.name} </h2>
 				<p> Rotation Period: {this.props.planet.rotation_period} hours</p>
 				<p> Orbital Period: {this.props.planet.orbital_period} days</p>

@@ -12,7 +12,7 @@ class PeopleCard extends Component {
 	}
 	render(){
 		return(
-			<div className='bg-washed-yellow dib br3 b--blue pa3 ma2 grow bw3 w5' onClick={this.wasClicked}>
+			<div className='card bg-washed-yellow dib ma2 br3 b--yellow grow ba w5' onClick={this.wasClicked}>
 				<h2> {this.props.person.name} </h2>
 				<p> Height: {this.props.person.height}</p>
 				<p> Mass: {this.props.person.mass}</p>

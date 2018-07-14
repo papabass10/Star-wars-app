@@ -12,7 +12,7 @@ class ShipCard extends Component {
 	}
 	render(){
 		return(
-			<div className='bg-light-red dib br3 b--blue pa3 ma2 grow bw3 w5' onClick={this.wasClicked}>
+			<div className='card bg-light-red dib br3 ma2 b--red grow ba w5' onClick={this.wasClicked}>
 				<h2> {this.props.ship.name} </h2>
 				<p> Model: {this.props.ship.model}</p>
 				<p> Manufacturer: {this.props.ship.manufacturer}</p>

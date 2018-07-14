@@ -26,3 +26,21 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.header {
+	display: flex;
+	justify-content: space-around;
+}
+
+.counter {
+	font-size: 4rem;
+	color: white;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+

@@ -13,7 +13,7 @@ class VehicleCard extends Component {
 
 	render(){
 		return(
-			<div className='bg-light-green dib br3 b--blue pa3 ma2 grow bw3 w5' onClick={this.wasClicked}>
+			<div className='card bg-light-green dib ma2 br3 b--green grow ba w5' onClick={this.wasClicked}>
 				<h2> {this.props.vehicle.name} </h2>
 				<p> Model: {this.props.vehicle.model}</p>
 				<p> Manufacturer: {this.props.vehicle.manufacturer}</p>

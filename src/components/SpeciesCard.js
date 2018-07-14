@@ -13,7 +13,7 @@ class SpeciesCard extends Component {
 	}
 	render(){
 		return(
-			<div className='bg-light-blue dib br3 b--blue pa3 ma2 grow bw3 w5' onClick={this.wasClicked}>
+			<div className='card bg-light-blue dib ma2 br3 b--blue grow ba w5' onClick={this.wasClicked}>
 				<h2> {this.props.species.name} </h2>
 				<p> Classification: {this.props.species.classification}</p>
 				<p> Designation: {this.props.species.designation}</p>
