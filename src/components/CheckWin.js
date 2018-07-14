@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 class CheckWin extends Component {
 	constructor(props){
-		super(props)
+		super(props) 
 		this.state = {}
 	}
 	render() {
