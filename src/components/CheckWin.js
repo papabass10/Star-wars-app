@@ -18,7 +18,7 @@ class CheckWin extends Component {
 				return(
 					<div>
 						<h1 className='f-6 white header'>You Lose!!</h1>
-						<h3 className='f2 white' onClick={this.props.reset}> Play Again? </h3>
+						<h3 className='br3 bg-red ba f2 white' onClick={this.props.reset}> Play Again? </h3>
 					</div>
 				)
 			} else {
