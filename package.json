@@ -2,7 +2,7 @@
   "name": "star-wars-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://papabass10.github.io/Star-wars-app",
+  "homepage": "https://papabass10.github.io/Star-wars-app",
   "dependencies": {
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
